@@ -25,9 +25,6 @@ public class CommonPage extends AbstractPage implements ICommonPage {
         PageFactory.initElements(getDriver(), this);
     }
 
-
-    //private String customBPXpath = "//button[@data-view-id='main_search_form_button']";
-
     private String cartXpath = "//span[@class='cart-text']";
 
     public void clickOnSearchButton() {
@@ -36,7 +33,7 @@ public class CommonPage extends AbstractPage implements ICommonPage {
 
     public void openDefaultSite() {
         //logger.info(" ===== Get the current URL ======== ");
-        getUrl("https://tiki.vn/");
+        getUrl("https://workgot.vn/signin?channel=stagingfase5");
     }
 
     public void waitTenSecons() throws InterruptedException {

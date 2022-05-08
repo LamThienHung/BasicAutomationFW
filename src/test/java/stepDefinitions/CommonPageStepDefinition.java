@@ -17,5 +17,4 @@ public class CommonPageStepDefinition {
         getCommonPage().waitTenSecons();
     }
 
-
 }

@@ -94,7 +94,7 @@ public class Generic {
 
     private static void startChromeDriver() {
         WebDriverManager.chromedriver().clearPreferences();
-        WebDriverManager.chromedriver().version("91").setup();
+        WebDriverManager.chromedriver().version("101").setup();
         ChromeOptions options = setOptionsForChrome();
         if (isHeadless()) {
             options.addArguments("--no-sandbox");

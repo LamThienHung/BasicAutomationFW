@@ -13,7 +13,6 @@ public class PageManager {
     public static ICommonPage getInstance(ICommonPage iPage, String className) {
         try {
             if (iPage == null || !iPage.getDriver().equals(DriverFactory.getCurrentDriver())) {
-                System.out.println("Da Vao");
                 iPage = (ICommonPage) Class.forName(className).getConstructor(WebDriver.class).newInstance(DriverFactory.getCurrentDriver());
                 //logger.info("Init class: " + iPage.getClass().getName());
             }
