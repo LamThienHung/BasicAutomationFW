@@ -1,66 +1,71 @@
 package FW.base;
 
+import FW.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.robotframework.javalib.annotation.*;
-import org.testng.Assert;
 import org.apache.logging.log4j.*;
 
-import java.util.concurrent.TimeUnit;
+public abstract class AbstractPage {
 
-public class AbstractPage {
+    protected static Logger logger;
 
-    protected Logger logger;
+    private static final int SELENIUM_TIMEOUT_SECONDS = 5;
 
-    protected WebDriver driver;
-
-    public AbstractPage(WebDriver driver) {
-        this.driver = driver;
+    public WebDriver getDriver() {
+        return null;
     }
-
-    private final int SELENIUM_TIMEOUT_SECONDS = 15;
-
-    // Wait Element
 
     public WebElement waitForClickableOfElement(By selector, String elementName) {
-        logger.info("+++ Wait For Clickable Of Element: " + elementName);
-        WebDriverWait wait = new WebDriverWait(driver, SELENIUM_TIMEOUT_SECONDS);
+        WebDriverWait wait = new WebDriverWait(getDriver(), SELENIUM_TIMEOUT_SECONDS);
         return wait.until(ExpectedConditions.elementToBeClickable(selector));
     }
 
-    public WebElement waitForVisibilityOfElement(By selector, String elementName) {
-        logger.info("+++ Wait For Clickable Of Element: " + elementName);
-        WebDriverWait wait = new WebDriverWait(driver, SELENIUM_TIMEOUT_SECONDS);
+    public WebElement waitForClickableOfElement(By selector, String elementName, int waitTimeOut) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), waitTimeOut);
         return wait.until(ExpectedConditions.elementToBeClickable(selector));
     }
 
-    public boolean waitUntilElementIsDisplayed(By selector, String elementName) {
-        logger.info("Wait for element displayed: " + elementName);
-        logger.info("+++ Wait For Clickable Of Element: " + elementName);
-        WebDriverWait wait = new WebDriverWait(driver, SELENIUM_TIMEOUT_SECONDS);
-        return wait.until(ExpectedConditions.invisibilityOfElementLocated(selector));
+    public WebElement waitForClickableOfElement(WebElement element, String elementName) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), SELENIUM_TIMEOUT_SECONDS);
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    //Action on element
-
-
-    public void clickElement(By slector, String elementName) {
-        logger.info("+++ Click on Element: " + elementName);
-        waitForVisibilityOfElement(slector, elementName);
-        waitForClickableOfElement(slector, elementName).click();
+    public void waitForClickableOfElement(WebElement element, String elementName, int waitTimeOut) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), waitTimeOut);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    private static By entityNameXpath = By.xpath("//h3[@class='company-item-name']");
-
-
-
-
-    public void verifyInviteClientButtonNotDisplayed() {
-
+    public void waitForVisibleElement(WebElement element, String elementName) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), SELENIUM_TIMEOUT_SECONDS);
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    public void waitUntilElementIsDisplayed(By selector, String elementName) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), SELENIUM_TIMEOUT_SECONDS);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(selector));
+    }
+
+    public WebElement getElementByXpath(String xpath, String... arg) {
+        WebElement webElement = null;
+        if (arg.length > 0) {
+            xpath = String.format ( xpath , arg );
+        }
+        try {
+            webElement = getDriver ( ).findElement ( By.xpath ( xpath ) );
+        } catch ( Exception ex ) {
+        }
+        return webElement;
+    }
+
+    public void getUrl(String url) {
+        getDriver().get(url);
+    }
+
+    public void clickElement(WebElement element, String elementName) {
+        waitForClickableOfElement(element, elementName).click();
+    }
 
 }
