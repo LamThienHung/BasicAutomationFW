@@ -23,12 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3dc0534c-77dd-43a1-b7e9-120c71eab0f6" name="Default Changelist" comment="Test">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyBuild.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyBuild.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/FW/pageObject/CommonPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/FW/pageObject/CommonPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/FW/utilities/Generic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/FW/utilities/Generic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/FW/utilities/PageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/FW/utilities/PageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepDefinitions/CommonPageStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepDefinitions/CommonPageStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
